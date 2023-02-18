@@ -9,18 +9,19 @@ public class IntList {
     }
 
     public IntList(int[] list) {
+
         this.list = Arrays.copyOf(list, list.length);
     }
 
-    public String toString(int[] list) {
+    public String toString() {
         return Arrays.toString(list);
     }
 
-    public int getIndex(int index) {
+    public int getElement(int index) {
         return list[index];
     }
 
-    public int size(int[] list) {
+    public int size() {
         return list.length;
     }
 
@@ -30,32 +31,36 @@ public class IntList {
         return a;
     }
 
-    public void increaseArr(int element) {
+    public void add(int element) {
         int[] Arr = new int[list.length + 1];
-
         System.arraycopy(list, 0, Arr, 0, list.length);
         Arr[list.length] = element;
         list = Arr;
     }
 
-    public int decreaseArr(int index) {
+    public int remove(int index) {
+        int excluded = list[index];
         int[] newArr = new int[list.length - 1];
         System.arraycopy(list, 0, newArr, 0, index);
+
         System.arraycopy(list, index + 1, newArr, index, newArr.length - index);
         list = newArr;
-        return list[index];
+
+        return excluded;
     }
 
-    public int[] subList(int startIndexInclusive, int endIndexExclusive) {
-        int[] intList = new int[endIndexExclusive - startIndexInclusive];
-        System.arraycopy(list, startIndexInclusive, intList, 0, endIndexExclusive - startIndexInclusive);
-        return intList;
+    public IntList subList(int startIndexInclusive, int endIndexExclusive) {
+
+        int[] shortlist = new int[endIndexExclusive - startIndexInclusive];
+        System.arraycopy(list, startIndexInclusive, shortlist, 0, endIndexExclusive - startIndexInclusive);
+
+        return new IntList(shortlist);
     }
 
-    public int[] sublist(int startIndexInclusive) {
-        int[] intList = new int[list.length - startIndexInclusive];
-        System.arraycopy(list, startIndexInclusive, intList, 0, list.length - startIndexInclusive);
-        return intList;
+    public IntList sublist(int startIndexInclusive) {
+        int[] shortlist = new int[list.length - startIndexInclusive];
+        System.arraycopy(list, startIndexInclusive, shortlist, 0, list.length - startIndexInclusive);
+        return new IntList(shortlist);
     }
 
     public int lastIndexOf(int element) {
