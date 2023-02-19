@@ -18,6 +18,9 @@ public class IntList {
     }
 
     public int getElement(int index) {
+        if (index > list.length - 1 || index < 0) {
+            throw new IllegalArgumentException("Index out of bounds");
+        }
         return list[index];
     }
 
@@ -26,6 +29,9 @@ public class IntList {
     }
 
     public int set(int index, int element) {
+        if (index > list.length - 1 || index < 0) {
+            throw new IllegalArgumentException("Index out of bounds");
+        }
         int a = list[index];
         list[index] = element;
         return a;
@@ -39,6 +45,9 @@ public class IntList {
     }
 
     public int remove(int index) {
+        if (index > list.length - 1 || index < 0) {
+            throw new IllegalArgumentException("Index out of bounds");
+        }
         int excluded = list[index];
         int[] newArr = new int[list.length - 1];
         System.arraycopy(list, 0, newArr, 0, index);
@@ -50,7 +59,9 @@ public class IntList {
     }
 
     public IntList subList(int startIndexInclusive, int endIndexExclusive) {
-
+if (startIndexInclusive<0||startIndexInclusive>endIndexExclusive||endIndexExclusive>list.length-1){
+    throw new IllegalArgumentException("Indexes are out of bounds or incorrect");
+}
         int[] shortlist = new int[endIndexExclusive - startIndexInclusive];
         System.arraycopy(list, startIndexInclusive, shortlist, 0, endIndexExclusive - startIndexInclusive);
 
@@ -58,6 +69,9 @@ public class IntList {
     }
 
     public IntList sublist(int startIndexInclusive) {
+        if (startIndexInclusive<0||startIndexInclusive>list.length-1){
+            throw new IllegalArgumentException("Indexes are out of bounds or incorrect");
+        }
         int[] shortlist = new int[list.length - startIndexInclusive];
         System.arraycopy(list, startIndexInclusive, shortlist, 0, list.length - startIndexInclusive);
         return new IntList(shortlist);
