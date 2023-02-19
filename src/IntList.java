@@ -59,9 +59,9 @@ public class IntList {
     }
 
     public IntList subList(int startIndexInclusive, int endIndexExclusive) {
-if (startIndexInclusive<0||startIndexInclusive>endIndexExclusive||endIndexExclusive>list.length-1){
-    throw new IllegalArgumentException("Indexes are out of bounds or incorrect");
-}
+        if (startIndexInclusive < 0 || startIndexInclusive > endIndexExclusive || endIndexExclusive > list.length - 1) {
+            throw new IllegalArgumentException("Indexes are out of bounds or incorrect");
+        }
         int[] shortlist = new int[endIndexExclusive - startIndexInclusive];
         System.arraycopy(list, startIndexInclusive, shortlist, 0, endIndexExclusive - startIndexInclusive);
 
@@ -69,7 +69,7 @@ if (startIndexInclusive<0||startIndexInclusive>endIndexExclusive||endIndexExclus
     }
 
     public IntList sublist(int startIndexInclusive) {
-        if (startIndexInclusive<0||startIndexInclusive>list.length-1){
+        if (startIndexInclusive < 0 || startIndexInclusive > list.length - 1) {
             throw new IllegalArgumentException("Indexes are out of bounds or incorrect");
         }
         int[] shortlist = new int[list.length - startIndexInclusive];
