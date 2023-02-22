@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class HomewWork13 {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter length of the array");
         int listLength = sc.nextInt();

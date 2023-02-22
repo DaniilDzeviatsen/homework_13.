@@ -5,7 +5,7 @@ public class IntList {
     private int[] list;
 
     public IntList() {
-
+        this.list = new int[]{};
     }
 
     public IntList(int[] list) {
@@ -38,10 +38,10 @@ public class IntList {
     }
 
     public void add(int element) {
-        int[] Arr = new int[list.length + 1];
-        System.arraycopy(list, 0, Arr, 0, list.length);
-        Arr[list.length] = element;
-        list = Arr;
+        int[] arr = new int[list.length + 1];
+        System.arraycopy(list, 0, arr, 0, list.length);
+        arr[list.length] = element;
+        list = arr;
     }
 
     public int remove(int index) {
@@ -69,19 +69,14 @@ public class IntList {
     }
 
     public IntList sublist(int startIndexInclusive) {
-        if (startIndexInclusive < 0 || startIndexInclusive > list.length - 1) {
-            throw new IllegalArgumentException("Indexes are out of bounds or incorrect");
-        }
-        int[] shortlist = new int[list.length - startIndexInclusive];
-        System.arraycopy(list, startIndexInclusive, shortlist, 0, list.length - startIndexInclusive);
-        return new IntList(shortlist);
+        return subList(startIndexInclusive, list.length - startIndexInclusive);
     }
 
     public int lastIndexOf(int element) {
         int index = -1;
-        for (int i = 0; i < list.length; i++) {
+        for (int i = list.length - 1; i > -1; i--) {
             if (list[i] == element) {
-                index = i;
+                return i;
             }
         }
         return index;
@@ -101,7 +96,4 @@ public class IntList {
         }
     }
 
-    public int[] getList() {
-        return list;
-    }
 }
