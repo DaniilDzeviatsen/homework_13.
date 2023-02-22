@@ -59,7 +59,7 @@ public class IntList {
     }
 
     public IntList subList(int startIndexInclusive, int endIndexExclusive) {
-        if (startIndexInclusive < 0 || startIndexInclusive > endIndexExclusive || endIndexExclusive > list.length - 1) {
+        if (startIndexInclusive < 0 || startIndexInclusive > endIndexExclusive || endIndexExclusive > list.length) {
             throw new IllegalArgumentException("Indexes are out of bounds or incorrect");
         }
         int[] shortlist = new int[endIndexExclusive - startIndexInclusive];
@@ -69,7 +69,7 @@ public class IntList {
     }
 
     public IntList sublist(int startIndexInclusive) {
-        return subList(startIndexInclusive, list.length-1);
+        return subList(startIndexInclusive, list.length);
     }
 
     public int lastIndexOf(int element) {
