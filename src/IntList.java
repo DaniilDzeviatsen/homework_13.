@@ -69,7 +69,7 @@ public class IntList {
     }
 
     public IntList sublist(int startIndexInclusive) {
-        return subList(startIndexInclusive, list.length - startIndexInclusive);
+        return subList(startIndexInclusive, list.length-1);
     }
 
     public int lastIndexOf(int element) {
